@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+set -e
+
+SUDO=${SUDO:-sudo}
+echo "Using $SUDO as sudo utility. Set \$SUDO to change it."
+
+echo "Installing Guest Additions"
+read -p "Please mount the guest agent DVD and enter the device name (default /dev/sr0)..." DEV
+DEV=${DEV:-/dev/sr0}
+MNT=/mnt/vmwareguest
+echo "Will use $DEV to mount at $MNT"
+
+$SUDO mkdir -p $MNT
+$SUDO mount -t iso9660 $DEV $MNT
+ch $MNT
+./VBoxLinuxAdditions.run
