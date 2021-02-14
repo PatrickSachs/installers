@@ -17,3 +17,4 @@ $SUDO umount $MNT || /bin/true
 $SUDO mount -t iso9660 $DEV $MNT
 cd $MNT
 ./VBoxLinuxAdditions.run
+$SUDO umount $MNT || /bin/true
