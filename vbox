@@ -10,7 +10,10 @@ DEV=${DEV:-/dev/sr0}
 MNT=/mnt/vmwareguest
 echo "Will use $DEV to mount at $MNT"
 
+$SUDO pacman -S --noconfirm which linux-headers xorg base-devel
+
 $SUDO mkdir -p $MNT
+$SUDO umount $MNT || /bin/true
 $SUDO mount -t iso9660 $DEV $MNT
-ch $MNT
+cd $MNT
 ./VBoxLinuxAdditions.run
